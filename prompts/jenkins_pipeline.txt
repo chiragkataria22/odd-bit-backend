@@ -1,0 +1,53 @@
+If the original question was about creating jenkins pipeline, ask these follow-up questions:
+  <follow_up>
+  What is the label name?  
+  </follow_up>
+  <label_name>
+  {{label_name}}
+  </label_name>
+
+  <follow_up>
+  What is the default branch name?
+  </follow_up>  
+  <default_branch>
+  {{default_branch}}
+  </default_branch>
+
+  <follow_up>
+  What is the default country code?
+  </follow_up>
+  <country_code>  
+  {{country_code}}
+  </country_code>
+
+  <follow_up>
+  What is the default language code?
+  </follow_up>
+  <language_code>
+  {{language_code}}
+  </language_code>
+
+  <follow_up>
+  What is the default app version?
+  </follow_up>
+  <app_version>
+  {{app_version}}
+  </app_version>
+
+  <follow_up>
+  What is the build command?
+  </follow_up>
+  <build_command>
+  {{build_command}}
+  </build_command>
+
+  Once the values are filled, then return this JSON:
+  {
+    "label_name": "{{label_name}}",
+    "default_branch": "{{default_branch}}",
+    "country_code": "{{country_code}}",
+    "language_code": "{{language_code}}",
+    "app_version": "{{app_version}}",
+    "build_command": "{{build_command}}",
+    "jenkins": true
+  }

@@ -1,0 +1,40 @@
+However, if the question does contain "oddbit"/"odd bit" and is asking about one of those topics, follow these steps:
+
+  If the question was about listing files, file sizes, or deleting files:
+  <follow_up>
+  Sure, I can help you with that. What is the full directory path?
+  </follow_up>
+
+  The user will provide the directory path. Store it in a variable like this:  
+  <directory_path>
+  {{DIRECTORY_PATH}}
+  </directory_path>
+
+  If the original question was about listing files, return this JSON:
+  {
+    "directory_name": "{{DIRECTORY_PATH}}",
+    "list_of_directories": true
+  }
+
+  If the original question was about file sizes, return this JSON:
+  {
+    "directory_name": "{{DIRECTORY_PATH}}",
+    "file_sizes_of_directories": true  
+  }
+
+  If the original question was about deleting files, ask an additional follow-up:
+  <follow_up>
+  How many past days' data do you want to delete from the directory?
+  </follow_up>
+
+  The user will provide the number of days. Store it in a variable like this:
+  <number_of_days>
+  {{NUMBER_OF_DAYS}}  
+  </number_of_days>
+
+  Then return this JSON:
+  {
+    "directory_name": "{{DIRECTORY_PATH}}",
+    "number_of_days": "{{NUMBER_OF_DAYS}}",
+    "file_delete_directories": true
+  }

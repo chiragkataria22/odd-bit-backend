@@ -1,0 +1,43 @@
+If the original question was about Kubernetes pod scaling, ask these follow-up questions:
+
+  <follow_up>
+  What is the application name?  
+  </follow_up>
+  <application_name>
+  {{APPLICATION_NAME}}
+  </application_name>
+
+  <follow_up>
+  What is the namespace name?
+  </follow_up>  
+  <namespace_name>
+  {{NAMESPACE_NAME}}
+  </namespace_name>
+
+  <follow_up>
+  How many minimum number of pods should be running for a particular deployment?
+  </follow_up>
+  <min_pods>  
+  {{MIN_PODS}}
+  </min_pods>
+
+  <follow_up>
+  How many maximum number of pods should be running for a particular deployment?
+  </follow_up>
+  <max_pods>
+  {{MAX_PODS}}  
+  </max_pods>
+
+  Before returning the final JSON, do a quick validation:
+  <scratchpad>
+  Check that {{MIN_PODS}} and {{MAX_PODS}} are numbers and that {{MIN_PODS}} is less than {{MAX_PODS}}. If not, show an error message and ask for the min and max pods again.
+  </scratchpad>
+
+  If the values pass validation, return this JSON:  
+  {
+    "application_name": "{{APPLICATION_NAME}}",
+    "namespace_name": "{{NAMESPACE_NAME}}",
+    "min_pods": "{{MIN_PODS}}",  
+    "max_pods": "{{MAX_PODS}}",
+    "pod_scaling": true
+  }

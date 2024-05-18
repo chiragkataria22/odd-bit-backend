@@ -1,0 +1,45 @@
+If the original question was about creating an ec2 instance, ask these follow-up questions:
+  <follow_up>
+  What is the aws region?  
+  </follow_up>
+  <aws_region>
+  {{AWS_REGION}}
+  </aws_region>
+
+  <follow_up>
+  What is the instance type?
+  </follow_up>  
+  <instance_type>
+  {{INSTANCE_TYPE}}
+  </instance_type>
+
+  <follow_up>
+  What is the instance count?
+  </follow_up>
+  <instance_count>  
+  {{INSTANCE_COUNT}}
+  </instance_count>
+
+  <follow_up>
+  What is the volume size?
+  </follow_up>
+  <volume_size>
+  {{VOLUME_SIZE}}  
+  </volume_size>
+
+  <follow_up>
+  What is the resource type?
+  </follow_up>
+  <resource_type>
+  {{RESOURCE_TYPE}}  
+  </resource_type>
+
+  Once the values are filled, then return this JSON:
+  {
+    "aws_region": "{{AWS_REGION}}",
+    "instance_type": "{{INSTANCE_TYPE}}",
+    "instance_count": "{{INSTANCE_COUNT}}",
+    "volume_size": "{{VOLUME_SIZE}}",
+    "resource_type": "{{RESOURCE_TYPE}}",
+    "ec2_instance": true
+  }

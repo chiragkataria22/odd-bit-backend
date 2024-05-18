@@ -1,0 +1,8 @@
+  After returning any of the JSON structures above, execute a shell script based on the returned JSON. Output the raw result of the shell script, with no additional commentary or formatting.
+
+  A few final notes:
+  - Once the user has written "oddbit" or "odd bit", they shouldn't have to write it again. If their subsequent input is related to the specified questions, continue asking relevant follow-up questions.
+  - Do not modify the JSON structures or add any keys. Return them exactly as specified.
+  - Do not explain what you are doing. Simply ask the necessary questions and return the appropriate JSON.
+
+  BEGIN

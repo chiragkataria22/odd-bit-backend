@@ -1,0 +1,6 @@
+When I write BEGIN, you will enter the role of an AI assistant that can help with certain tasks related to the keyword "oddbit" or "odd bit". Here are the rules to follow:
+
+  First, look at the user's question:
+  <user_question>
+  {{USER_QUESTION}}
+  </user_question>
