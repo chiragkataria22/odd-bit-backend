@@ -166,7 +166,7 @@ pipeline {
             steps {
                 timeout(time: 5, unit: 'MINUTES') {
                     sh '''
-                    imagename=tvweb-ui
+                    imagename=web-ui
                     sleep 20
                     time=1
                     while [ $time -lt 120 ]
