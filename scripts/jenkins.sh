@@ -62,7 +62,7 @@ pipeline {
                     doGenerateSubmoduleConfigurations: false,
                     extensions: [[$class: 'CleanBeforeCheckout']],
                     submoduleCfg: [],
-                    userRemoteConfigs: [[credentialsId: '45650768-eed2-4d32-8f3e-a8ca8257028a', url: 'https://git.yo-digital.com/tv-frontend/web-ui.git']]
+                    userRemoteConfigs: [[credentialsId: '45650768-eed2-4d32-8f3e-a8ca8257028a', url: 'https://git.yo-digital.com/frontend/web-ui.git']]
                 ])
                 script {
                     commit_id = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
@@ -89,7 +89,7 @@ pipeline {
                     doGenerateSubmoduleConfigurations: false,
                     extensions: [[$class: 'CleanCheckout'], [$class: 'RelativeTargetDirectory', relativeTargetDir: 'devops']],
                     submoduleCfg: [],
-                    userRemoteConfigs: [[credentialsId: '45650768-eed2-4d32-8f3e-a8ca8257028a', url: 'https://git.yo-digital.com/devops/tv/tv-eks-docker-code.git']]
+                    userRemoteConfigs: [[credentialsId: '45650768-eed2-4d32-8f3e-a8ca8257028a', url: 'https://git.yo-digital.com/devops/xy/xy-eks-docker-code.git']]
                 ])
             }
         }
@@ -130,7 +130,7 @@ pipeline {
             }
             steps {
                 sh '''
-                imagename=tv-web-ui
+                imagename=web-ui
                 aws ecr get-login --region eu-central-1 --no-include-email | bash
                 ./devops/dtdl_make_ecr_image_nonprod.sh  
                 '''
@@ -149,15 +149,15 @@ pipeline {
             steps {          
                 sh '''
                 K8sENV=
-                imagename=tv-web-ui
+                imagename=web-ui
                 release=--webui
                 sed -i "s/COUNTRY_CODE1/\${COUNTRY_CODE}/g" devops/non-prod/\${ENVIRONMENT}-values.yml
                 sed -i "s/LANGUAGE_CODE1/\${LANGUAGE_CODE}/g" devops/non-prod/\${ENVIRONMENT}-values.yml
                 sed -i "s/APP_VERSION1/\${APP_VERSION}/g" devops/non-prod/\${ENVIRONMENT}-values.yml                    
                 sed -i "s/:.*$/:/g" devops/non-prod/\${ENVIRONMENT}-values.yml
-                sed -i "s/namespace:.*$/namespace: tv--/g" devops/non-prod/\${ENVIRONMENT}-values.yml
-                export KUBECONFIG=/opt/kubernetes/tv-nonprod.yo-digital.com.kubeconfig
-                helm upgrade --install \${imagename} devops/non-prod/\${release} --values devops/non-prod/\${ENVIRONMENT}-values.yml -n tv--\${K8sENV}
+                sed -i "s/namespace:.*$/namespace: xy--/g" devops/non-prod/\${ENVIRONMENT}-values.yml
+                export KUBECONFIG=/opt/kubernetes/xy-nprod.yo-digital.com.kubeconfig
+                helm upgrade --install \${imagename} devops/non-prod/\${release} --values devops/non-prod/\${ENVIRONMENT}-values.yml -n xy--\${K8sENV}
                 '''
             }
         }
